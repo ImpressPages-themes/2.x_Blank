@@ -1,0 +1,194 @@
+// Top Menu
+.currentPage {
+    font-weight: bold;
+    display: none;
+    margin-right: @marginBottomContent;
+}
+.topmenuToggle {
+    background: @linkColor url(img/icon_menu.png) no-repeat center center;
+    border-radius: 3px;
+    color: @linkColor;
+    display: none;
+    margin-top: @marginBottomContent;
+    padding: (@marginBottomContent / 2) @marginBottomContent;
+}
+.topmenu {
+    float: right;
+    font-size: @fontSize;
+    margin-top: @marginBottomContent;
+
+    ul {
+        display: inline;
+        list-style: none;
+    }
+
+    .level1 > li {
+        display: inline-block;
+        position: relative;
+    }
+
+    a {
+        color: @linkColor;
+        display: block;
+        padding: (@marginBottomContent / 2) @marginBottomContent;
+        white-space: nowrap;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .current > a {
+        font-weight: bold;
+    }
+
+    .selected > a {
+        color: @textColor;
+        font-weight: bold;
+    }
+
+    .subnodes > a {
+        padding-right: 30px;
+
+        &:after {
+            content: '\25BC';
+            position: absolute;
+            right: 5px;
+        }
+    }
+
+    .level1 ul {
+        background-color: @backgroundColor;
+        border: 1px solid @borderColor;
+        box-shadow: 0 1px 3px rgba(0,0,0,.5);
+        display: none;
+        position: absolute;
+        z-index: 10; //should be higher than widget controls
+    }
+    li:hover > ul {
+        display: block;
+    }
+    .level2 {
+        ul { // infinite number of levels down
+            margin-left: 100%;
+            top: 0;
+        }
+    }
+}
+.topmenuPopup {
+    background-color: @backgroundColor;
+    border: 1px solid @borderColor;
+    box-shadow: 0 1px 3px rgba(0,0,0,.5);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.languages {
+    display: inline-block;
+    margin-left: @marginBottomContent;
+
+    ul {
+        list-style: none;
+    }
+    li {
+        display: inline-block;
+    }
+    a {
+        color: @linkColor;
+        display: block;
+        padding: (@marginBottomContent / 2) (@marginBottomContent / 4);
+        white-space: nowrap;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .current a {
+        font-weight: bold;
+    }
+}
+
+// Side Menu
+.side {
+    nav {
+        font-size: @fontSize;
+
+        ul {
+            list-style: none;
+        }
+
+        ul ul { // pushing inner levels to the right
+            margin-left: @marginBottomContent;
+        }
+
+        a {
+            color: @linkColor;
+            display: block;
+            margin-bottom: (@marginBottomContent / 2);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .current > a {
+            font-weight: bold;
+        }
+
+        .selected > a {
+            color: @textColor;
+            font-weight: bold;
+        }
+
+        // .side nav.collapse
+        &.collapse {
+            .level1 ul { // "collapse" class force menu to hide 2nd level until parent or child is not selected
+                display: none;
+            }
+
+            .current, .selected {
+                ul { // displaying 2nd level
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+// changing behavior on mobile devices
+@media screen and (max-width: (@screenMedium - 1px)) {
+    .currentPage,
+    .topmenuToggle {
+        display: inline-block;
+    }
+    .topmenu {
+        .topmenuPopup;
+
+        .level1 ul {
+            border: none;
+            box-shadow: none;
+            margin: 0 @marginBottomContent;
+            position: static;
+        }
+        .level1 > li {
+            display: list-item;
+        }
+    }
+    .languages {
+        border-top: 1px solid @borderColor;
+        display: block;
+        margin-left: 0;
+
+        a {
+            padding: (@marginBottomContent / 2) @marginBottomContent;
+        }
+    }
+}
