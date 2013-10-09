@@ -86,8 +86,8 @@
 
 //@ipFormInputColor: #777;
 //@ipFormInputFocus: #000;
-//@ipFormInputFontSize: @ipFontSize;
-//@ipFormInputFontFamily: @ipFontFamily;
+//@ipFormInputFontSize: @ipFontFamily;
+//@ipFormInputFontFamily: @ipFontSize;
 //@ipFormInputBackground: @ipBackgroundColor;
 //@ipFormInputMaxWidth: 380px;
 //@ipFormInputBackgroundActive: @ipBackgroundColor;

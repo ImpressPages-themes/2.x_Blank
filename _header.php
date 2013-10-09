@@ -9,7 +9,7 @@
 <html<?php echo $this->htmlAttributes(); ?>>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php $site->addCss(BASE_URL.LIBRARY_DIR.'js/colorbox/themes/2/colorbox.css'); ?>
+    <?php $site->addCss(BASE_URL.LIBRARY_DIR.'js/colorbox/themes/'.$this->getThemeOption('lightboxStyle').'/colorbox.css'); ?>
     <?php $site->addCss(BASE_URL.THEME_DIR.THEME.'/theme.css'); ?>
     <?php echo $site->generateHead(); ?>
     <!--[if lt IE 9]>
@@ -31,11 +31,11 @@
                     echo $this->generateMenu('top', 'menu1');
                 ?>
                 <div class="languages">
-                    <?php echo $this->generateBlock('ipLanguages'); ?>
+                    <?php echo $this->generateSlot('ipLanguages'); ?>
                 </div>
             </div>
 
             <a href="#" class="searchToggle">&nbsp;</a>
-            <?php echo $this->generateBlock('ipSearch'); ?>
+            <?php echo $this->generateSlot('ipSearch'); ?>
         </div>
     </header>

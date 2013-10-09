@@ -1,109 +1,122 @@
-// Disabling default styles
-html, body, h1, h2, h3, h4, h5, h6, img, blockquote, form, fieldset, label, p, ul, ol, li, dl, dd, dt, pre {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
+// exception from the scope rule to change global styles that won't have any influence to any other elements
 body {
-    background-color: @backgroundColor;
-    color: @textColor;
-    font-family: @fontFamily;
-    font-size: @fontSize;
+    background-color: @bodyBackgroundColor;
 }
-a {
-    text-decoration: none;
-}
-Z
-/*
-    Global
-*/
-.left {
-    float: left;
-}
-.right {
-    float: right;
-}
+// use to change behavior when in administration; i.e. reposition background image
+body.manage {}
 
-/*
-    Structure
-*/
+// all styles and theme elements should go under '.theme' scope to safely separate from administration elements
 .theme {
-    background-color: @wrapperBackgroundColor;
-    margin: 0 auto;
+    // restoring specificity for global classes
+    .caption { .caption; }
+    .signature { .signature; }
+    .note { .note; }
+    .button { .button; }
+
+    background-color: @ipBackgroundColor;
+    color: @ipTextColor;
+    font-family: @ipFontFamily;
+    font-size: @ipFontSize;
+    margin: 0 auto; // centering all content
     max-width: (1200px - @columnPadding*2);
     padding: 0 @columnPadding;
-    position: relative; // required for .gridhint
-}
-.theme > header {
-    border-bottom: 1px solid @borderColorDark;
-    margin-bottom: @marginBottomWidget;
-    padding-bottom: @marginBottomWidget;
-}
-.theme > footer {
-    border-top: 1px solid @borderColorDark;
-    margin-top: @marginBottomWidget;
-    padding: (@marginBottomContent / 2) 0;
-}
-.homerow {
-    clear: both;
-    border-top: 1px solid @borderColor;
-    padding-top: @marginBottomWidget;
-}
-.side {
-    clear: left; // to keep columns in place
+    position: relative; // all positioning should be relative to the '.theme' as it may appear in different environment
 
-    // changing behavior on mobile and tablet devices
-    @media screen and (max-width: (@screenLarge - 1px)) {
-        .main + & {
-            border-top: 1px solid @borderColor;
-            padding-top: @marginBottomWidget;
+    // Links should look the same everywhere
+    a {
+        color: @ipLinkColor;
+        text-decoration: none;
+    }
+
+    // Common styles
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+
+    // Structure
+    & > header {
+        border-bottom: 1px solid @ipBorderColorActive;
+        margin-bottom: @ipSpaceGlobal;
+        padding-bottom: @ipSpaceGlobal;
+    }
+    & > footer {
+        border-top: 1px solid @ipBorderColorActive;
+        margin-top: @ipSpaceGlobal;
+        padding: (@ipSpaceGlobal / 2) 0;
+    }
+    .homerow {
+        clear: both;
+        border-top: 1px solid @ipBorderColor;
+        padding-top: @ipSpaceGlobal;
+    }
+    .side {
+        clear: left; // to keep columns in place
+
+        // changing behavior on mobile and tablet devices
+        @media screen and (max-width: (@screenLarge - 1px)) {
+            .main + & {
+                border-top: 1px solid @ipBorderColor;
+                padding-top: @ipSpaceGlobal;
+            }
         }
     }
-}
-
-/*
-    Styles
-*/
-.logo {
-    margin-top: @marginBottomWidget;
-    display: block;
-    float: left;
-
-    a {
-        color: @textColor;
-        font-family: @fontFamily;
-        font-size: 24px;
-        font-weight: bold;
-    }
-}
-.homeString {
-    font-family: @fontFamily;
-    font-size: 60px;
-    font-weight: bold;
-    margin-bottom: @marginBottomWidget;
-    text-align: center;
-
-    // changing behavior on mobile devices
-    @media screen and (max-width: (@screenMedium - 1px)) {
-        font-size: 40px;
-    }
-}
-.homeText {
-    font-family: @fontFamilyAlternative;
-    font-size: 24px;
-    margin-bottom: @marginBottomWidget;
-    text-align: center;
-}
-.homeText p {
-    margin-bottom: @marginBottomWidget;
-
-    &:last-child {
+    .sidenav {
         margin-bottom: 0;
+
+        nav > ul {
+            margin-bottom: (@ipSpaceGlobal * 2);
+        }
     }
-}
-.theme > footer a {
-    .linkColor();
-}
-.theme > footer a:hover {
-    text-decoration: underline;
+
+    // Header
+    .logo {
+        margin-top: @ipSpaceGlobal;
+        display: block;
+        float: left;
+
+        a {
+            color: @ipTextColor;
+            font-family: @ipFontFamily;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+
+    // Homepage
+    .homeHeadline {
+        font-family: @ipFontFamily;
+        font-size: 60px;
+        font-weight: bold;
+        margin: @ipSpaceGlobal 0;
+        text-align: center;
+
+        // changing behavior on mobile devices
+        @media screen and (max-width: (@screenMedium - 1px)) {
+            font-size: 40px;
+        }
+    }
+    .homeDescription {
+        font-family: @ipFontFamilyAlternative;
+        font-size: @ipFontSizeBig;
+        margin-bottom: @ipSpaceGlobal;
+    }
+    .homeDescription p {
+        margin-bottom: @ipSpaceGlobal;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Footer
+    & > footer p {
+        margin: 0;
+    }
+    & > footer a:hover {
+        text-decoration: underline;
+    }
+
 }

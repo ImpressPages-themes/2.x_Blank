@@ -12,14 +12,14 @@
             "bigHeight": 600 /* Lightbox */
         },
         "imageGallery": {
-            "width": 180,
-            "height": 100,
+            "width": 295,
+            "height": 164,
             "bigWidth": 800, /* Lightbox */
             "bigHeight": 600 /* Lightbox */
         },
         "logoGallery": {
-            "width": 180,
-            "height": 180
+            "width": 295,
+            "height": 295
         },
         "textImage": {
             "width": 380,
@@ -29,6 +29,37 @@
         }
     },
     "options": [
+        {
+            "label": "Text color",
+            "name": "textColor",
+            "type": "color",
+            "default": "#000"
+        },
+        {
+            "label": "Link color",
+            "name": "linkColor",
+            "type": "color",
+            "default": "#019bd4"
+        },
+        {
+            "label": "Body background color",
+            "name": "bodyBackgroundColor",
+            "type": "color",
+            "default": "#fff"
+        },
+        {
+            "label": "Content background color",
+            "name": "backgroundColor",
+            "type": "color",
+            "default": "#fff"
+        },
+        {
+            "label": "Lightbox style",
+            "name": "lightboxStyle",
+            "type": "select",
+            "default": "2",
+            "values": [1, 2, 3, 4, 5]
+        },
         {
             "label": "Homepage blocks",
             "name": "homeBlocks",
@@ -40,7 +71,7 @@
             "label": "Homepage blocks 2",
             "name": "homeBlocks2",
             "type": "select",
-            "default": 3,
+            "default": 2,
             "values": [0, 2, 3, 4]
         }
     ]
